@@ -1,6 +1,16 @@
-<h1>CollegeNet</h1>
-<p>
-  This is the home page for the
+<% provide(:title, "Home") %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= yield(:title) %> | CollegeNet</title>
+  </head>
+  <body>
+    <h1>CollegeNet</h1>
+    <p>
+      This is the home page for the
   <a href="http://tvufinal.herokuapp.com">CollegeNet</a>
   social network.
-</p>
+    </p>
+  </body>
+</html>
+
