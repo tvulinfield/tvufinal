@@ -1,16 +1,14 @@
-<% provide(:title, "Home") %>
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= yield(:title) %> | CollegeNet</title>
-  </head>
-  <body>
-    <h1>CollegeNet</h1>
-    <p>
-      This is the home page for the
-  <a href="http://tvufinal.herokuapp.com">CollegeNet</a>
-  social network.
-    </p>
-  </body>
-</html>
+<div class="center jumbotron">
+  <h1>Welcome to CollegeNet</h1>
 
+  <h2>
+    This is the home page for the
+    <a href="http://tvufinal.herokuapp.com">CollegeNet</a>
+    social network.
+  </h2>
+
+  <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+</div>
+
+<%= link_to image_tag("logo.png", alt: "CollegeNet logo"),
+            'http://tvufinal.herokuapp.com' %>
