@@ -8,9 +8,10 @@
 User.create!(first_name:  "Example", last_name: "User",
              email: "example@linfield.edu", school: "Example School",
              password:              "foobar",
-             password_confirmation: "foobar", admin: true)
+             password_confirmation: "foobar", admin: true,activated: true,
+             activated_at: Time.zone.now)
 
-99.times do |n|
+50.times do |n|
   first_name  = Faker::Name.first_name
   last_name = Faker::Name.last_name
   school = "Linfield College"
@@ -19,9 +20,10 @@ User.create!(first_name:  "Example", last_name: "User",
   User.create!(first_name:  first_name,last_name:last_name,
                email: email,school:school,
                password:              password,
-               password_confirmation: password)
+               password_confirmation: password,activated: true,
+              activated_at: Time.zone.now)
   users = User.order(:created_at).take(6)
-50.times do
+20.times do
   content = Faker::Lorem.sentence(5)
   users.each { |user| user.microposts.create!(content: content) }
 end
