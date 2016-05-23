@@ -2,6 +2,15 @@ class MicropostsController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy]
   before_action :correct_user,   only: :destroy
 
+  #def index
+    #@micropost = Micropost.all.order("created_at DESC")
+  #end
+  def index
+    @microposts = Micropost.all
+    @comment = @micropost.comments.build(params[:comment])
+    @comment.user = current_user
+  end
+
   def create
     @micropost = current_user.microposts.build(micropost_params)
     if @micropost.save

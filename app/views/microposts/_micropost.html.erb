@@ -9,5 +9,7 @@
       <%= link_to "delete", micropost, method: :delete,
                                        data: { confirm: "Are you sure you want to delete this post?" } %>
     <% end %>
+    
   </span>
+  <%= render partial: 'comments/form', collection: @micropost %>
 </li>
