@@ -1,0 +1,16 @@
+<li style="padding-left: 10px" id="comment-<%= comment.id %>"
+  <%= link_to gravatar_for(comment.user, size: 30), comment.user %>
+  <span class="user" style="font-size: 13px"><%= link_to comment.user.first_name, comment.user %> <%= link_to comment.user.last_name, comment.user %></span> <font size="1.5"> at </font>
+  <span class="user" style="font-size: 10px"><%= link_to comment.user.school%></span> <font size="1.5">Commented: </font>
+  <span class="content" style="font-size: 13px"><%= comment.content %></span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(comment.created_at) %> ago.
+    <% if current_user?(comment.user) %>
+    <%= link_to 'Delete Comment', [comment.micropost, comment],
+               method: :delete,
+               data: { confirm: 'Are you sure you want to delete this comment?' } %>
+  </span>
+  <%end%>
+  
+</li>
+

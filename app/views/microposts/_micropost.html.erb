@@ -1,7 +1,7 @@
 <li id="micropost-<%= micropost.id %>">
   <%= link_to gravatar_for(micropost.user, size: 50), micropost.user %>
   <span class="user" style="font-size: 15px"><%= link_to micropost.user.first_name, micropost.user %> <%= link_to micropost.user.last_name, micropost.user %></span>
-  <span class="user" style="font-size: 10px"><%= link_to micropost.user.school, micropost.user %></span>
+  <span class="user" style="font-size: 10px"><%= link_to micropost.user.school%></span>
   <span class="content"><%= micropost.content %></span>
   <span class="timestamp">
     Posted <%= time_ago_in_words(micropost.created_at) %> ago.
@@ -9,7 +9,9 @@
       <%= link_to "delete", micropost, method: :delete,
                                        data: { confirm: "Are you sure you want to delete this post?" } %>
     <% end %>
-    
   </span>
-  <%= render partial: 'comments/form', collection: @micropost %>
+  
+    <%= render micropost.comments %>
+  
+  <%= render :partial => 'comments/form', :locals => { :micropost => micropost } %>
 </li>

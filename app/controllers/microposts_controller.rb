@@ -5,10 +5,21 @@ class MicropostsController < ApplicationController
   #def index
     #@micropost = Micropost.all.order("created_at DESC")
   #end
+  #def index
+    #@microposts = Micropost.all
+    #@comment = @micropost.comments.build(params[:comment])
+    #@comment.user = current_user
+  #end
   def index
-    @microposts = Micropost.all
-    @comment = @micropost.comments.build(params[:comment])
-    @comment.user = current_user
+    if !params[:q].nil? and !params[:q].empty?
+      @micropost = Micropost.where(:user_id => User.find_by_name(params[:q]))
+    else
+      @micropost = Micropost.all
+    end
+  end
+
+  def show
+   
   end
 
   def create
